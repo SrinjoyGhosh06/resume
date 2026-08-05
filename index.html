@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Srinjoy Ghosh — Senior Backend Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0c0e;--surface:#141418;--surface2:#1e1e24;--accent:#e8b86d;--accent2:#c9876a;--text:#f0ece4;--muted:#8a8680;--border:rgba(255,255,255,0.07);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(12,12,14,0.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;letter-spacing:0.05em;color:var(--accent);}
+.nav-links{display:flex;gap:2.5rem;list-style:none;}
+.nav-links a{font-family:'DM Mono',monospace;font-size:0.68rem;text-decoration:none;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--accent);}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 70% 50%,rgba(232,184,109,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-left{padding:5rem 4rem 4rem 5rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
+.hero-eyebrow{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem;display:flex;align-items:center;gap:1rem;}
+.hero-eyebrow::before{content:'';width:2.5rem;height:1px;background:var(--accent);}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(4rem,7vw,6.5rem);font-weight:300;line-height:0.95;margin-bottom:1.5rem;}
+h1 em{font-style:italic;color:var(--accent);font-weight:300;}
+.hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--muted);font-style:italic;margin-bottom:2rem;}
+.hero-desc{font-size:0.92rem;line-height:1.85;color:rgba(240,236,228,0.65);max-width:440px;margin-bottom:3rem;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn{padding:0.85rem 2rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;border:none;cursor:pointer;}
+.btn-gold{background:var(--accent);color:var(--bg);}
+.btn-gold:hover{background:#f0ca85;}
+.btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.2);}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
+.hero-right{display:flex;align-items:center;justify-content:center;padding:5rem 4rem;position:relative;z-index:1;}
+.photo-frame{position:relative;width:340px;height:420px;}
+.photo-frame::before{content:'';position:absolute;top:-12px;left:-12px;right:12px;bottom:12px;border:1px solid var(--accent);opacity:0.4;}
+.photo-frame::after{content:'';position:absolute;top:12px;left:12px;right:-12px;bottom:-12px;background:linear-gradient(135deg,var(--accent2) 0%,transparent 60%);opacity:0.12;}
+.avatar-block{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--surface2) 0%,var(--surface) 100%);filter:contrast(1.05);position:relative;z-index:1;border:1px solid var(--border);}
+.avatar-initials{font-family:'Cormorant Garamond',serif;font-size:7rem;font-weight:600;color:var(--accent);letter-spacing:0.05em;}
+.photo-tag{position:absolute;bottom:-2rem;right:-2rem;z-index:2;background:var(--surface2);border:1px solid var(--border);padding:0.8rem 1.2rem;}
+.photo-tag-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:var(--accent);line-height:1;}
+.photo-tag-label{font-family:'DM Mono',monospace;font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);}
+.stats-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{padding:2rem;border-right:1px solid var(--border);transition:background 0.2s;}
+.stat-item:last-child{border-right:none;}
+.stat-item:hover{background:var(--surface2);}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:var(--accent);line-height:1;margin-bottom:0.4rem;}
+.stat-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);}
+section{padding:6rem 5rem;}
+.sec-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:4rem;}
+.sec-num{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:0.15em;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.5rem);font-weight:300;}
+.sec-line{flex:1;height:1px;background:var(--border);margin-left:1rem;align-self:center;}
+.about{background:var(--surface);}
+.about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:5rem;}
+.about-text{font-size:0.95rem;line-height:1.9;color:rgba(240,236,228,0.7);}
+.about-text p+p{margin-top:1.4rem;}
+.about-text strong{color:var(--accent);font-weight:500;}
+.skill-group{margin-bottom:2rem;}
+.skill-group-label{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.8rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border);}
+.tags{display:flex;flex-wrap:wrap;gap:0.4rem;}
+.tag{background:rgba(255,255,255,0.04);border:1px solid var(--border);padding:0.3rem 0.75rem;font-size:0.77rem;color:rgba(240,236,228,0.6);transition:all 0.2s;}
+.tag:hover{background:rgba(232,184,109,0.1);border-color:rgba(232,184,109,0.3);color:var(--accent);}
+.exp-list{display:flex;flex-direction:column;}
+.exp-item{display:grid;grid-template-columns:220px 1fr;gap:4rem;padding:3.5rem 0;border-top:1px solid var(--border);}
+.exp-item:last-child{border-bottom:1px solid var(--border);}
+.exp-company{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.4rem;}
+.exp-period{font-family:'DM Mono',monospace;font-size:0.64rem;color:var(--muted);letter-spacing:0.08em;margin-bottom:0.8rem;}
+.exp-badge{display:inline-block;background:rgba(232,184,109,0.12);border:1px solid rgba(232,184,109,0.25);color:var(--accent);padding:0.2rem 0.6rem;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;text-transform:uppercase;}
+.exp-role{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;margin-bottom:1.2rem;font-weight:300;}
+.exp-points{list-style:none;display:flex;flex-direction:column;gap:0.85rem;}
+.exp-points li{font-size:0.88rem;line-height:1.75;color:rgba(240,236,228,0.65);padding-left:1.4rem;position:relative;}
+.exp-points li::before{content:'↗';position:absolute;left:0;color:var(--accent);font-size:0.75rem;top:0.1rem;}
+.surface-sec{background:var(--surface);}
+.cards{display: grid;grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 1px;background: var(--border);}
+.card{background:var(--surface);padding:2.5rem;transition:background 0.2s;position:relative;overflow:hidden;}
+.card:hover{background:var(--surface2);}
+.card::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s;}
+.card:hover::after{width:100%;}
+.card-icon{font-size:1.6rem;margin-bottom:1rem;}
+.card-title{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;margin-bottom:0.7rem;}
+.card-text{font-size:0.85rem;line-height:1.75;color:rgba(240,236,228,0.6);}
+.stack-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3rem;}
+.stack-col-title{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent2);margin-bottom:1.5rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
+.stack-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+.stack-list li{font-size:0.88rem;color:rgba(240,236,228,0.7);padding-left:1.2rem;position:relative;}
+.stack-list li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:0.7rem;}
+.edu-grid{display: grid;grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 2px;background: var(--border);}
+.edu-card{background:var(--surface);padding:2.5rem;}
+.edu-degree{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.3rem;}
+.edu-school{font-size:0.9rem;color:rgba(240,236,228,0.7);margin-bottom:0.5rem;}
+.edu-year{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;}
+.cta{background:linear-gradient(135deg,#1a1208 0%,#0c0c0e 100%);text-align:center;padding:7rem 5rem;border-top:1px solid rgba(232,184,109,0.2);}
+.cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;margin-bottom:1rem;}
+.cta-title em{font-style:italic;color:var(--accent);}
+.cta-sub{font-size:0.92rem;color:var(--muted);margin-bottom:3rem;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.8;}
+.cta-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+.hero-left>*{animation:fadeUp 0.7s ease forwards;opacity:0;}
+.hero-left>*:nth-child(1){animation-delay:0.1s;}
+.hero-left>*:nth-child(2){animation-delay:0.22s;}
+.hero-left>*:nth-child(3){animation-delay:0.34s;}
+.hero-left>*:nth-child(4){animation-delay:0.46s;}
+.hero-left>*:nth-child(5){animation-delay:0.58s;}
+.photo-frame{animation:fadeUp 0.8s 0.4s ease forwards;opacity:0;}
+@media(max-width:900px){
+  nav{padding:1rem 2rem;}
+  nav .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{display:flex;padding:2rem 2rem 4rem;justify-content:center;}
+  .photo-frame{width:220px;height:270px;animation:none;opacity:1;}
+  .avatar-initials{font-size:4.5rem;}
+  .hero-left{padding:5rem 2rem 2rem;}
+  section{padding:4rem 2rem;}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+  .cards{grid-template-columns:1fr;}
+  .stack-grid{grid-template-columns:1fr;gap:2rem;}
+  .edu-grid{grid-template-columns:1fr;}
+  .stats-bar{grid-template-columns:1fr 1fr;}
+  .exp-item{grid-template-columns:1fr;gap:1rem;}
+  footer{flex-direction:column;gap:0.5rem;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Srinjoy Ghosh</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Senior Java Backend Developer</div>
+    <h1>Srinjoy<br><em>Ghosh</em></h1>
+    <p class="hero-sub">Java · Spring Boot · Spring WebFlux · Apache Kafka</p>
+    <p class="hero-desc">
+      Results-driven IT professional with 8 years of overall experience and 
+over 6 years as a Senior Java Backend Developer, architecting and delivering scalable, high-performance distributed systems.
+      Deep expertise in reactive programming (Project Reactor / WebFlux) and event-driven
+      microservices built on Apache Kafka and WebSockets — with a strong foundation in
+      Data Structures &amp; Algorithms and clean-code engineering practice.
+    </p>
+    <div class="hero-actions">
+      <a href="mailto:srinjoy006@gmail.com" class="btn btn-gold">Get in Touch</a>
+      <a href="https://linkedin.com/in/srinjoy-ghosh339911222" target="_blank" class="btn btn-outline">View LinkedIn</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <div class="avatar-block">
+        <span class="avatar-initials">SG</span>
+      </div>
+      <div class="photo-tag">
+        <div class="photo-tag-num">7+</div>
+        <div class="photo-tag-label">Years Exp.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">LTIMindtree</div><div class="stat-label">Current · Specialist SWE</div></div>
+  <div class="stat-item"><div class="stat-num">TCS</div><div class="stat-label">Prev · Systems Engineer</div></div>
+  <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">Years of Experience</div></div>
+  <div class="stat-item"><div class="stat-num">Bengaluru</div><div class="stat-label">Open to Relocate / Remote</div></div>
+</div>
+
+<section class="about" id="about">
+  <div class="sec-header"><span class="sec-num">01</span><h2 class="sec-title">About</h2><div class="sec-line"></div></div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>Senior Java Backend Developer</strong> with 6 years of experience architecting and delivering scalable, high-performance distributed systems — currently a <strong>Specialist Software Engineer at LTIMindtree</strong>, having started my career at <strong>Tata Consultancy Services</strong>.</p>
+      <p>My core strength lies in <strong>reactive programming</strong> with Spring WebFlux and Project Reactor, and building <strong>event-driven microservices</strong> powered by Apache Kafka and WebSockets — designing systems from greenfield through to production deployment.</p>
+      <p>I care deeply about engineering rigour: I drive <strong>80%+ unit and integration test coverage</strong> using JUnit and Mockito, and bring a strong <strong>Data Structures &amp; Algorithms</strong> foundation to system design. Recognised as an <strong>Outstanding Performer (2025)</strong> for contributions to architecture, performance optimisation, and team collaboration.</p>
+    </div>
+    <div>
+      <div class="skill-group">
+        <div class="skill-group-label">Languages &amp; Frameworks</div>
+        <div class="tags">
+          <span class="tag">Java 8 / 11 / 17+</span><span class="tag">Spring Boot</span><span class="tag">Spring WebFlux</span><span class="tag">Project Reactor</span><span class="tag">Spring MVC</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Architecture &amp; Patterns</div>
+        <div class="tags">
+          <span class="tag">Microservices</span><span class="tag">Event-Driven Architecture</span><span class="tag">REST API Design</span><span class="tag">System Design</span><span class="tag">Reactive Programming</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Messaging &amp; Testing</div>
+        <div class="tags">
+          <span class="tag">Apache Kafka</span><span class="tag">WebSockets</span><span class="tag">JUnit</span><span class="tag">Mockito</span><span class="tag">Git</span><span class="tag">Jenkins</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="sec-header"><span class="sec-num">02</span><h2 class="sec-title">Experience</h2><div class="sec-line"></div></div>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div>
+        <div class="exp-company">LTIMindtree</div>
+        <div class="exp-period">Apr 2022 — Present</div>
+        <span class="exp-badge">Specialist Software Engineer</span>
+      </div>
+      <div>
+        <div class="exp-role">Backend &amp; Reactive Systems</div>
+        <ul class="exp-points">
+          <li>Architected and developed production-grade Spring Boot microservices from greenfield, owning end-to-end responsibility from system design and module architecture through core business logic and deployment.</li>
+          <li>Built non-blocking, asynchronous services using Project Reactor and Spring WebFlux, enabling efficient utilisation of multi-core processors and measurably reducing average API response latency.</li>
+          <li>Designed and implemented event-driven microservices consuming real-time messages from Apache Kafka topics and WebSocket streams, applying complex data transformations and publishing enriched payloads downstream.</li>
+          <li>Drove code quality culture by enforcing 80%+ unit and integration test coverage using JUnit and Mockito, resulting in fewer production defects and smoother release cycles.</li>
+          <li>Designed and delivered RESTful APIs for web and mobile clients, incorporating pagination, caching strategies, and robust error-handling patterns for high availability and scalability.</li>
+          <li>Collaborated with frontend and QA teams on full-stack root-cause analysis, reducing mean time to resolution (MTTR) for critical production defects.</li>
+          <li>Received the <strong style="color:var(--accent)">Outstanding Performer Award (2025)</strong> for exceptional contributions to architecture, performance optimisation, and team collaboration.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-company">Tata Consultancy Services</div>
+        <div class="exp-period">Jun 2018 — Apr 2022</div>
+        <span class="exp-badge">Systems Engineer</span>
+      </div>
+      <div>
+        <div class="exp-role">Enterprise Backend Development</div>
+        <ul class="exp-points">
+          <li>Developed and maintained robust RESTful APIs for enterprise web and mobile applications, ensuring high availability, scalability, and seamless integration across distributed backend services.</li>
+          <li>Identified and resolved defects across the full application stack — from UI interactions through backend services to database layers — partnering closely with front-end and database teams.</li>
+          <li>Improved application performance through code refactoring and pagination for large dataset queries, resulting in noticeably faster response times and reduced server load on high-traffic endpoints.</li>
+          <li>Upheld coding standards and backward compatibility while iteratively enhancing existing features, contributing to a stable and maintainable codebase across multiple release cycles.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="surface-sec" id="accomplishments">
+  <div class="sec-header"><span class="sec-num">03</span><h2 class="sec-title">Accomplishments</h2><div class="sec-line"></div></div>
+  <div class="cards">
+    <div class="card"><div class="card-icon">🏆</div><div class="card-title">Outstanding Performer — 2025</div><div class="card-text">Recognised at LTIMindtree for exceptional contributions to system architecture, performance optimisation, and cross-functional team collaboration.</div></div>
+    <div class="card"><div class="card-icon">🏆</div><div class="card-title">Super crew Award</div><div class="card-text">Received Super Crew Award almost every quater for consistent performance</div></div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="sec-header"><span class="sec-num">04</span><h2 class="sec-title">Tech Stack</h2><div class="sec-line"></div></div>
+  <div class="stack-grid">
+    <div>
+      <div class="stack-col-title">Core Engineering</div>
+      <ul class="stack-list">
+        <li>Java 8, 11, 17, 21 — primary language</li>
+        <li>Spring Boot &amp; Spring MVC — microservice development and REST APIs</li>
+        <li>Spring WebFlux &amp; Project Reactor — reactive, non-blocking service design</li>
+        <li>Strong Data Structures &amp; Algorithms foundation</li>
+      </ul>
+    </div>
+    <div>
+      <div class="stack-col-title">Messaging &amp; Streaming</div>
+      <ul class="stack-list">
+        <li>Apache Kafka — event-driven microservices, topic consumption</li>
+        <li>WebSockets — real-time data streams</li>
+        <li>Asynchronous, non-blocking service design</li>
+      </ul>
+    </div>
+    <div>
+      <div class="stack-col-title">Testing &amp; Tools</div>
+      <ul class="stack-list">
+        <li>JUnit &amp; Mockito — unit and integration testing (80%+ coverage)</li>
+        <li>Git, Maven, Jenkins Pipeline — version control &amp; CI/CD</li>
+        <li>IntelliJ IDEA, Eclipse, JIRA</li>
+      </ul>
+    </div>
+    <div>
+      <div class="stack-col-title">Architecture &amp; Methodologies</div>
+      <ul class="stack-list">
+        <li>Microservices &amp; Event-Driven Architecture</li>
+        <li>REST API Design &amp; System Design</li>
+        <li>Distributed Systems, Caching Strategies, Pagination, Error Handling</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="surface-sec" id="education">
+  <div class="sec-header"><span class="sec-num">05</span><h2 class="sec-title">Education</h2><div class="sec-line"></div></div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
+      <div class="edu-school">Bengal College of Engineering &amp; Technology · DGPA 7.9</div>
+      <div class="edu-year">2014 — 2018</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Higher Secondary (12th) — 75.6%</div>
+      <div class="edu-school">Bidhan Chandra Institution</div>
+      <div class="edu-year">2012 — 2014</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Secondary (10th) — 80.56%</div>
+      <div class="edu-school">Modern High School</div>
+      <div class="edu-year">2012</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2 class="cta-title">Let's Build<br><em>Something Great</em></h2>
+  <p class="cta-sub">Open to Senior Backend Engineer / SDE-2 roles at product companies. Based in Kolkata, West Bengal. Open to Bengaluru and remote.</p>
+  <div class="cta-links">
+    <a href="mailto:srinjoy006@gmail.com" class="btn btn-gold">srinjoy006@gmail.com</a>
+    <a href="https://linkedin.com/in/srinjoy-ghosh339911222" target="_blank" class="btn btn-outline">LinkedIn</a>
+    <a href="tel:+917699854898" class="btn btn-outline">+91 76998 54898</a>
+  </div>
+</section>
+
+<footer>
+  <span>Srinjoy Ghosh — Senior Java Backend Developer</span>
+  <span>Kolkata, West Bengal, India · 2026</span>
+</footer>
+</body>
+</html>
