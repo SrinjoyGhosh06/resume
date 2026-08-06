@@ -130,6 +130,22 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
   .exp-item{grid-template-columns:1fr;gap:1rem;}
   footer{flex-direction:column;gap:0.5rem;text-align:center;}
 }
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:1000;padding:1.5rem;}
+.modal-overlay.active{display:flex;}
+.modal-box{background:var(--surface2);border:1px solid var(--border);max-width:400px;width:100%;padding:2.5rem 2rem;position:relative;animation:fadeUp 0.3s ease forwards;}
+.modal-close{position:absolute;top:1rem;right:1.2rem;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;line-height:1;padding:0.3rem;}
+.modal-close:hover{color:var(--accent);}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;margin-bottom:0.4rem;}
+.modal-sub{font-size:0.82rem;color:var(--muted);margin-bottom:1.8rem;}
+.modal-row{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;border-top:1px solid var(--border);}
+.modal-row:last-of-type{border-bottom:1px solid var(--border);}
+.modal-row-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent2);margin-bottom:0.3rem;}
+.modal-row-value{font-size:0.92rem;color:var(--text);}
+.modal-row a.modal-row-value{color:var(--text);text-decoration:none;}
+.modal-row a.modal-row-value:hover{color:var(--accent);}
+.copy-btn{background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--muted);font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.4rem 0.7rem;cursor:pointer;white-space:nowrap;transition:all 0.2s;}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent);}
+.copy-btn.copied{border-color:var(--accent);color:var(--accent);}
 </style>
 </head>
 <body>
@@ -165,14 +181,12 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
     </div>
 </div>
     <p class="hero-desc">
-      Results-driven IT professional with 8 years of overall experience and 
-over 6 years as a Senior Java Backend Developer, architecting and delivering scalable, high-performance distributed systems.
-      Deep expertise in reactive programming (Project Reactor / WebFlux) and event-driven
-      microservices built on Apache Kafka and WebSockets — with a strong foundation in
-      Data Structures &amp; Algorithms and clean-code engineering practice.
+      8 years in software engineering, with the last 6+ focused exclusively on Java backend architecture.
+      I design reactive, event-driven microservices at scale using Spring WebFlux, Project Reactor,
+      and Apache Kafka — built for performance, resilience, and clean engineering.
     </p>
     <div class="hero-actions">
-      <a href="mailto:srinjoy006@gmail.com" class="btn btn-gold">Get in Touch</a>
+      <button type="button" class="btn btn-gold" onclick="openContactModal()">Get in Touch</button>
       <a href="https://linkedin.com/in/srinjoy-ghosh339911222" target="_blank" class="btn btn-outline">View LinkedIn</a>
     </div>
   </div>
@@ -180,7 +194,7 @@ over 6 years as a Senior Java Backend Developer, architecting and delivering sca
     <div class="photo-frame">
       <img src = "DP2.jpeg" alt="Srinjoy Ghosh" class = "profile-img"/>
       <div class="photo-tag">
-        <div class="photo-tag-num">7+</div>
+        <div class="photo-tag-num">8+</div>
         <div class="photo-tag-label">Years Exp.</div>
       </div>
     </div>
@@ -190,7 +204,7 @@ over 6 years as a Senior Java Backend Developer, architecting and delivering sca
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-num">LTM</div><div class="stat-label">Current · Specialist SWE</div></div>
   <div class="stat-item"><div class="stat-num">TCS</div><div class="stat-label">Prev · Systems Engineer</div></div>
-  <div class="stat-item"><div class="stat-num">7+</div><div class="stat-label">Years of Experience</div></div>
+  <div class="stat-item"><div class="stat-num">8+</div><div class="stat-label">Years of Experience</div></div>
   <div class="stat-item"><div class="stat-num">Bengaluru</div><div class="stat-label">Open to Relocate / Remote</div></div>
 </div>
 
@@ -198,7 +212,7 @@ over 6 years as a Senior Java Backend Developer, architecting and delivering sca
   <div class="sec-header"><span class="sec-num">01</span><h2 class="sec-title">About</h2><div class="sec-line"></div></div>
   <div class="about-grid">
     <div class="about-text">
-      <p>I'm a <strong>Senior Java Backend Developer</strong> with 6 years of experience architecting and delivering scalable, high-performance distributed systems — currently a <strong>Specialist Software Engineer at LTM</strong>, having started my career at <strong>Tata Consultancy Services</strong>.</p>
+      <p>I'm a <strong>Senior Java Backend Developer</strong> with 8 years in IT, including <strong>6+ years specializing in Java backend architecture</strong>, delivering scalable, high-performance distributed systems — currently a <strong>Specialist Software Engineer at LTM</strong>, having started my career at <strong>Tata Consultancy Services</strong>.</p>
       <p>My core strength lies in <strong>reactive programming</strong> with Spring WebFlux and Project Reactor, and building <strong>event-driven microservices</strong> powered by Apache Kafka and WebSockets — designing systems from greenfield through to production deployment.</p>
       <p>I care deeply about engineering rigour: I drive <strong>80%+ unit and integration test coverage</strong> using JUnit and Mockito, and bring a strong <strong>Data Structures &amp; Algorithms</strong> foundation to system design. Recognised as an <strong>Outstanding Performer (2025)</strong> for contributions to architecture, performance optimisation, and team collaboration.</p>
     </div>
@@ -350,5 +364,75 @@ over 6 years as a Senior Java Backend Developer, architecting and delivering sca
   <span>Srinjoy Ghosh — Senior Java Backend Developer</span>
   <span>Kolkata, West Bengal, India · 2026</span>
 </footer>
+<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeContactModal()">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeContactModal()" aria-label="Close">&times;</button>
+    <div class="modal-title">Get in Touch</div>
+    <div class="modal-sub">Reach out directly — I usually respond within a day.</div>
+    <div class="modal-row">
+      <div>
+        <div class="modal-row-label">Email</div>
+        <a href="mailto:srinjoy006@gmail.com" class="modal-row-value">srinjoy006@gmail.com</a>
+      </div>
+      <button type="button" class="copy-btn" onclick="copyToClipboard('srinjoy006@gmail.com', this)">Copy</button>
+    </div>
+    <div class="modal-row">
+      <div>
+        <div class="modal-row-label">Phone</div>
+        <a href="tel:+917699854898" class="modal-row-value">+91 76998 54898</a>
+      </div>
+      <button type="button" class="copy-btn" onclick="copyToClipboard('+917699854898', this)">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+function openContactModal(){
+  document.getElementById('contactModal').classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeContactModal(){
+  document.getElementById('contactModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape')closeContactModal();
+});
+function copyToClipboard(text, btn){
+  function showCopied(){
+    var original=btn.textContent;
+    btn.textContent='Copied';
+    btn.classList.add('copied');
+    setTimeout(function(){
+      btn.textContent=original;
+      btn.classList.remove('copied');
+    },1500);
+  }
+  function fallbackCopy(){
+    var textarea=document.createElement('textarea');
+    textarea.value=text;
+    textarea.style.position='fixed';
+    textarea.style.top='-1000px';
+    textarea.style.left='-1000px';
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try{
+      document.execCommand('copy');
+      showCopied();
+    }catch(err){
+      btn.textContent='Copy failed';
+      setTimeout(function(){ btn.textContent='Copy'; },1500);
+    }
+    document.body.removeChild(textarea);
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText && window.isSecureContext){
+    navigator.clipboard.writeText(text).then(showCopied).catch(fallbackCopy);
+  }else{
+    fallbackCopy();
+  }
+}
+</script>
+
 </body>
 </html>
