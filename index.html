@@ -24,6 +24,7 @@ h1 em{font-style:italic;color:var(--accent);font-weight:300;}
 .hero-sub{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--muted);font-style:italic;margin-bottom:2rem;}
 .hero-desc{font-size:0.92rem;line-height:1.85;color:rgba(240,236,228,0.65);max-width:440px;margin-bottom:3rem;}
 .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-cert-tag{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(232,184,109,0.1);border:1px solid rgba(232,184,109,0.3);color:var(--accent);font-family:'DM Mono',monospace;font-size:0.68rem;letter-spacing:0.04em;padding:0.5rem 0.9rem;margin-bottom:1.6rem;width:fit-content;}
 .btn{padding:0.85rem 2rem;font-family:'DM Mono',monospace;font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;border:none;cursor:pointer;}
 .btn-gold{background:var(--accent);color:var(--bg);}
 .btn-gold:hover{background:#f0ca85;}
@@ -88,6 +89,17 @@ section{padding:6rem 5rem;}
 .edu-degree{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:600;margin-bottom:0.3rem;}
 .edu-school{font-size:0.9rem;color:rgba(240,236,228,0.7);margin-bottom:0.5rem;}
 .edu-year{font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);letter-spacing:0.1em;}
+.cert-card{position:relative;background:linear-gradient(135deg,rgba(232,184,109,0.08) 0%,var(--surface) 55%);border:1px solid rgba(232,184,109,0.35);padding:2.6rem 2.4rem;overflow:hidden;display:flex;align-items:center;gap:2.2rem;}
+.cert-card::before{content:'';position:absolute;top:-40%;right:-10%;width:280px;height:280px;background:radial-gradient(circle,rgba(232,184,109,0.18) 0%,transparent 70%);pointer-events:none;}
+.cert-badge-icon{flex-shrink:0;width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);display:flex;align-items:center;justify-content:center;font-size:2rem;box-shadow:0 0 0 1px rgba(232,184,109,0.4),0 0 30px rgba(232,184,109,0.25);position:relative;z-index:1;}
+.cert-body{position:relative;z-index:1;}
+.cert-new-tag{display:inline-block;background:var(--accent);color:var(--bg);font-family:'DM Mono',monospace;font-size:0.58rem;font-weight:500;letter-spacing:0.14em;padding:0.2rem 0.55rem;margin-bottom:0.7rem;animation:pulseGlow 2.2s ease-in-out infinite;}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(232,184,109,0.5);}50%{box-shadow:0 0 0 6px rgba(232,184,109,0);}}
+.cert-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;margin-bottom:0.3rem;}
+.cert-code{font-family:'DM Mono',monospace;font-size:0.68rem;color:var(--accent);letter-spacing:0.08em;margin-bottom:0.9rem;}
+.cert-desc{font-size:0.88rem;line-height:1.75;color:rgba(240,236,228,0.7);max-width:640px;}
+.cert-desc strong{color:var(--accent);font-weight:500;}
+@media(max-width:700px){.cert-card{flex-direction:column;align-items:flex-start;gap:1.2rem;padding:2rem;}}
 .cta{background:linear-gradient(135deg,#1a1208 0%,#0c0c0e 100%);text-align:center;padding:7rem 5rem;border-top:1px solid rgba(232,184,109,0.2);}
 .cta-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5rem);font-weight:300;margin-bottom:1rem;}
 .cta-title em{font-style:italic;color:var(--accent);}
@@ -155,8 +167,9 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#stack">Stack</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#stack">Stack</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -185,9 +198,11 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
       I design reactive, event-driven microservices at scale using Spring WebFlux, Project Reactor,
       and Apache Kafka — built for performance, resilience, and clean engineering.
     </p>
+    <div class="hero-cert-tag">🎓 Oracle Certified: Agentic AI Foundations Associate</div>
     <div class="hero-actions">
       <button type="button" class="btn btn-gold" onclick="openContactModal()">Get in Touch</button>
-      <a href="https://linkedin.com/in/srinjoy-ghosh339911222" target="_blank" class="btn btn-outline">View LinkedIn</a>
+      <a href="Srinjoy_Ghosh_Resume.pdf" download="Srinjoy_Ghosh_Resume.pdf" class="btn btn-outline">Download Resume</a>
+      <a href="https://www.linkedin.com/in/srinjoyghoshsde" target="_blank" class="btn btn-outline">View LinkedIn</a>
     </div>
   </div>
   <div class="hero-right">
@@ -235,6 +250,12 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
           <span class="tag">Apache Kafka</span><span class="tag">WebSockets</span><span class="tag">JUnit</span><span class="tag">Mockito</span><span class="tag">Git</span><span class="tag">Jenkins</span>
         </div>
       </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Agentic AI &amp; LLM Systems</div>
+        <div class="tags">
+          <span class="tag">LangChain</span><span class="tag">MCP</span><span class="tag">Vector Databases</span><span class="tag">Embeddings</span><span class="tag">LLM Fundamentals</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -280,8 +301,46 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
   </div>
 </section>
 
+<section class="surface-sec" id="education">
+  <div class="sec-header"><span class="sec-num">03</span><h2 class="sec-title">Education</h2><div class="sec-line"></div></div>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
+      <div class="edu-school">Bengal College of Engineering &amp; Technology · DGPA 7.9</div>
+      <div class="edu-year">2014 — 2018</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Higher Secondary (12th) — 75.6%</div>
+      <div class="edu-school">Bidhan Chandra Institution</div>
+      <div class="edu-year">2012 — 2014</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">Secondary (10th) — 80.56%</div>
+      <div class="edu-school">Modern High School</div>
+      <div class="edu-year">2012</div>
+    </div>
+  </div>
+</section>
+
+<section class="surface-sec" id="certifications">
+  <div class="sec-header"><span class="sec-num">04</span><h2 class="sec-title">Certifications</h2><div class="sec-line"></div></div>
+  <div class="cert-card">
+    <div class="cert-badge-icon">🎓</div>
+    <div class="cert-body">
+      <span class="cert-new-tag">New</span>
+      <div class="cert-title">Oracle Agentic AI Foundations Associate</div>
+      <div class="cert-code">Exam 1Z0-1157-26 · Oracle Certified</div>
+      <div class="cert-desc">
+        Certified in foundational <strong>Agentic AI</strong> concepts — covering <strong>LangChain</strong>, the
+        <strong>Model Context Protocol (MCP)</strong>, embeddings, and vector databases. Actively extending my
+        backend engineering foundation into the design of AI-driven, agentic systems.
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="surface-sec" id="accomplishments">
-  <div class="sec-header"><span class="sec-num">03</span><h2 class="sec-title">Accomplishments</h2><div class="sec-line"></div></div>
+  <div class="sec-header"><span class="sec-num">05</span><h2 class="sec-title">Accomplishments</h2><div class="sec-line"></div></div>
   <div class="cards">
     <div class="card"><div class="card-icon">🏆</div><div class="card-title">Outstanding Performer — 2025</div><div class="card-text">Recognised at LTM for exceptional contributions to system architecture, performance optimisation, and cross-functional team collaboration.</div></div>
     <div class="card"><div class="card-icon">🏆</div><div class="card-title">Super crew Award</div><div class="card-text">Received Super Crew Award almost every quater for consistent performance</div></div>
@@ -289,7 +348,7 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
 </section>
 
 <section id="stack">
-  <div class="sec-header"><span class="sec-num">04</span><h2 class="sec-title">Tech Stack</h2><div class="sec-line"></div></div>
+  <div class="sec-header"><span class="sec-num">06</span><h2 class="sec-title">Tech Stack</h2><div class="sec-line"></div></div>
   <div class="stack-grid">
     <div>
       <div class="stack-col-title">Core Engineering</div>
@@ -326,26 +385,14 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
         <li>Distributed Systems, Caching Strategies, Pagination, Error Handling</li>
       </ul>
     </div>
-  </div>
-</section>
-
-<section class="surface-sec" id="education">
-  <div class="sec-header"><span class="sec-num">05</span><h2 class="sec-title">Education</h2><div class="sec-line"></div></div>
-  <div class="edu-grid">
-    <div class="edu-card">
-      <div class="edu-degree">B.Tech — Computer Science &amp; Engineering</div>
-      <div class="edu-school">Bengal College of Engineering &amp; Technology · DGPA 7.9</div>
-      <div class="edu-year">2014 — 2018</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-degree">Higher Secondary (12th) — 75.6%</div>
-      <div class="edu-school">Bidhan Chandra Institution</div>
-      <div class="edu-year">2012 — 2014</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-degree">Secondary (10th) — 80.56%</div>
-      <div class="edu-school">Modern High School</div>
-      <div class="edu-year">2012</div>
+    <div>
+      <div class="stack-col-title">Agentic AI &amp; LLM Systems</div>
+      <ul class="stack-list">
+        <li>LangChain — foundational knowledge of LLM application chaining</li>
+        <li>Model Context Protocol (MCP) — standardized AI-tool integration</li>
+        <li>Vector Databases &amp; Embeddings — semantic search foundations</li>
+        <li>Oracle Certified: Agentic AI Foundations Associate (1Z0-1157-26)</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -355,7 +402,8 @@ footer{background:#080808;padding:1.5rem 5rem;display:flex;justify-content:space
   <p class="cta-sub">Open to Senior Backend Engineer / SDE-2 roles at product companies. Based in Kolkata, West Bengal. Open to Bengaluru and remote.</p>
   <div class="cta-links">
     <a href="mailto:srinjoy006@gmail.com" class="btn btn-gold">srinjoy006@gmail.com</a>
-    <a href="https://linkedin.com/in/srinjoy-ghosh339911222" target="_blank" class="btn btn-outline">LinkedIn</a>
+    <a href="Srinjoy_Ghosh_Resume.pdf" download="Srinjoy_Ghosh_Resume.pdf" class="btn btn-outline">Download Resume</a>
+    <a href="https://www.linkedin.com/in/srinjoyghoshsde" target="_blank" class="btn btn-outline">LinkedIn</a>
     <a href="tel:+917699854898" class="btn btn-outline">+91 76998 54898</a>
   </div>
 </section>
